@@ -33,6 +33,19 @@
 #include <cassert>
 #include <cstddef>
 
+#include <boost/archive/tmpdir.hpp>
+#include <boost/archive/text_iarchive.hpp>
+#include <boost/archive/text_oarchive.hpp>
+
+#include <boost/serialization/vector.hpp>
+#include <boost/serialization/array.hpp>
+#include <boost/serialization/string.hpp>
+#include <boost/serialization/map.hpp>
+#include <boost/serialization/base_object.hpp>
+#include <boost/serialization/utility.hpp>
+#include <boost/serialization/list.hpp>
+#include <boost/serialization/assume_abstract.hpp>
+
 namespace Opm
 {
     /// The state of a set of wells.
@@ -299,6 +312,19 @@ namespace Opm
         }
 
     private:
+        friend class boost::serialization::access;
+        template<class Archive>
+        void serialize(Archive & ar, const unsigned int version)
+        {
+            ar & bhp_;
+            ar & thp_;
+            ar & temperature_;
+            ar & wellrates_;
+            ar & perfrates_;
+            ar & perfpress_;
+            ar & wellMap_; // this is probably to complicated
+        }
+
         std::vector<double> bhp_;
         std::vector<double> thp_;
         std::vector<double> temperature_;

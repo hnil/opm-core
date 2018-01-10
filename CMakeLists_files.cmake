@@ -108,7 +108,7 @@ list (APPEND TEST_SOURCE_FILES
 	tests/test_parallel_linearsolver.cpp
 	tests/test_satfunc.cpp
 	tests/test_shadow.cpp
-	tests/test_equil.cpp
+#	tests/test_equil.cpp
 	tests/test_regionmapping.cpp
 	tests/test_blackoilstate.cpp
 	tests/test_wellsmanager.cpp

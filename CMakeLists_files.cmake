@@ -51,7 +51,6 @@ list (APPEND MAIN_SOURCE_FILES
         opm/core/pressure/msmfem/partition.c
         opm/core/pressure/tpfa/cfs_tpfa_residual.c
         opm/core/pressure/tpfa/ifs_tpfa.c
-        opm/core/pressure/tpfa/trans_tpfa.c
         opm/core/props/BlackoilPropertiesBasic.cpp
         opm/core/props/BlackoilPropertiesFromDeck.cpp
         opm/core/props/IncompPropertiesBasic.cpp
@@ -74,10 +73,6 @@ list (APPEND MAIN_SOURCE_FILES
         opm/core/transport/reorder/TransportSolverTwophaseReorder.cpp
         opm/core/transport/reorder/reordersequence.cpp
         opm/core/transport/reorder/tarjan.c
-        opm/core/utility/VelocityInterpolation.cpp
-        opm/core/utility/WachspressCoord.cpp
-        opm/core/utility/compressedToCartesian.cpp
-        opm/core/utility/extractPvtTableIndex.cpp
         opm/core/utility/miscUtilities.cpp
         opm/core/utility/miscUtilitiesBlackoil.cpp
         opm/core/wells/InjectionSpecification.cpp
@@ -92,21 +87,14 @@ list (APPEND MAIN_SOURCE_FILES
 # originally generated with the command:
 # find tests -name '*.cpp' -a ! -wholename '*/not-unit/*' -printf '\t%p\n' | sort
 list (APPEND TEST_SOURCE_FILES
-	tests/test_compressedpropertyaccess.cpp
 	tests/test_dgbasis.cpp
-	tests/test_cubic.cpp
 	tests/test_flowdiagnostics.cpp
 	tests/test_parallelistlinformation.cpp
-	tests/test_sparsevector.cpp
-       tests/test_velocityinterpolation.cpp
-	tests/test_uniformtablelinear.cpp
 	tests/test_wells.cpp
-	tests/test_wachspresscoord.cpp
 	tests/test_linearsolver.cpp
 	tests/test_parallel_linearsolver.cpp
 	tests/test_satfunc.cpp
 	tests/test_shadow.cpp
-#	tests/test_equil.cpp
 	tests/test_regionmapping.cpp
 	tests/test_blackoilstate.cpp
 	tests/test_wellsmanager.cpp
@@ -127,7 +115,6 @@ list (APPEND TEST_DATA_FILES
 	tests/capillary.DATA
 	tests/capillary_overlap.DATA
         tests/capillarySwatinit.DATA
-	tests/compressed_gridproperty.data
 	tests/deadfluids.DATA
 	tests/equil_livegas.DATA
 	tests/equil_liveoil.DATA
@@ -191,7 +178,6 @@ list (APPEND PUBLIC_HEADER_FILES
         opm/core/linalg/LinearSolverPetsc.hpp
         opm/core/linalg/LinearSolverUmfpack.hpp
         opm/core/linalg/ParallelIstlInformation.hpp
-        opm/core/linalg/blas_lapack.h
         opm/core/linalg/call_umfpack.h
         opm/core/linalg/sparse_sys.h
         opm/core/pressure/CompressibleTpfa.hpp
@@ -202,13 +188,10 @@ list (APPEND PUBLIC_HEADER_FILES
         opm/core/pressure/mimetic/mimetic.h
         opm/core/pressure/msmfem/dfs.h
         opm/core/pressure/msmfem/partition.h
-        opm/core/pressure/tpfa/TransTpfa.hpp
-        opm/core/pressure/tpfa/TransTpfa_impl.hpp
         opm/core/pressure/tpfa/cfs_tpfa_residual.h
         opm/core/pressure/tpfa/compr_quant_general.h
         opm/core/pressure/tpfa/compr_source.h
         opm/core/pressure/tpfa/ifs_tpfa.h
-        opm/core/pressure/tpfa/trans_tpfa.h
         opm/core/props/BlackoilPhases.hpp
         opm/core/props/BlackoilPropertiesBasic.hpp
         opm/core/props/BlackoilPropertiesFromDeck.hpp
@@ -251,15 +234,7 @@ list (APPEND PUBLIC_HEADER_FILES
         opm/core/transport/reorder/TransportSolverTwophaseReorder.hpp
         opm/core/transport/reorder/reordersequence.h
         opm/core/transport/reorder/tarjan.h
-        opm/core/utility/CompressedPropertyAccess.hpp
         opm/core/utility/initHydroCarbonState.hpp
-        opm/core/utility/RegionMapping.hpp
-        opm/core/utility/UniformTableLinear.hpp
-        opm/core/utility/VelocityInterpolation.hpp
-        opm/core/utility/WachspressCoord.hpp
-        opm/core/utility/buildUniformMonotoneTable.hpp
-        opm/core/utility/compressedToCartesian.hpp
-        opm/core/utility/extractPvtTableIndex.hpp
         opm/core/utility/miscUtilities.hpp
         opm/core/utility/miscUtilitiesBlackoil.hpp
         opm/core/utility/miscUtilities_impl.hpp
